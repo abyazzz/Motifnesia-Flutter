@@ -1,5 +1,6 @@
 // ...existing code...
 import 'package:flutter/material.dart';
+import '../../core/routes/app_routes.dart';
 
 class BottomNav extends StatelessWidget {
   const BottomNav({Key? key}) : super(key: key);
@@ -15,15 +16,30 @@ class BottomNav extends StatelessWidget {
       unselectedItemColor: Colors.grey,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outline), label: ''),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.chat_bubble_outline),
+          label: '',
+        ),
         BottomNavigationBarItem(icon: Icon(Icons.category_outlined), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
       ],
       onTap: (i) {
-        // placeholder: add navigation if needed
+        if (i == 0) {
+          // Home
+          Navigator.pushNamed(context, AppRoutes.home);
+        } else if (i == 4) {
+          // Profile
+          Navigator.pushNamed(context, AppRoutes.profile);
+        } else {
+          // tombol lain belum tersedia
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Halaman belum tersedia")),
+          );
+        }
       },
     );
   }
 }
+
 // ...existing code...
