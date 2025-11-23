@@ -1,6 +1,7 @@
 // ...existing code...
 import 'package:flutter/material.dart';
-import '../../core/routes/app_routes.dart';
+import '../../modules/users/home_page.dart';
+import '../../modules/users/profile.dart';
 
 class BottomNav extends StatelessWidget {
   const BottomNav({Key? key}) : super(key: key);
@@ -27,10 +28,16 @@ class BottomNav extends StatelessWidget {
       onTap: (i) {
         if (i == 0) {
           // Home
-          Navigator.pushNamed(context, AppRoutes.home);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const HomePage()),
+          );
         } else if (i == 4) {
           // Profile
-          Navigator.pushNamed(context, AppRoutes.profile);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const ProfilePage()),
+          );
         } else {
           // tombol lain belum tersedia
           ScaffoldMessenger.of(context).showSnackBar(
