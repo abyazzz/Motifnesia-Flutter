@@ -14,6 +14,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final _phoneC = TextEditingController(text: "081234534662");
   final _addressC = TextEditingController(text: "Ciamis, Jawa Barat");
 
+  String currentPhoto = "lib/assets/67faed38a76e7.jpg";
+
   @override
   void dispose() {
     _nameC.dispose();
@@ -30,27 +32,69 @@ class _EditProfilePageState extends State<EditProfilePage> {
       content: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Edit Profile",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            // FOTO PROFIL
+            Column(
+              children: [
+                CircleAvatar(
+                  radius: 60,
+                  backgroundImage: AssetImage(currentPhoto),
+                ),
+                const SizedBox(height: 10),
+
+                // Tombol ubah foto
+                TextButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Fitur upload foto belum aktif"),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    "Ubah Foto",
+                    style: TextStyle(
+                      fontSize: 14,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ],
             ),
 
             const SizedBox(height: 20),
 
-            _inputField("Nama Lengkap", _nameC),
-            _inputField("Email", _emailC),
-            _inputField("Nomor HP", _phoneC),
-            _inputField("Alamat", _addressC, maxLines: 3),
+            // CARD FORM EDIT PROFILE
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 6,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: Column(
+                children: [
+                  _inputField("Nama Lengkap", _nameC),
+                  _inputField("Email", _emailC),
+                  _inputField("Nomor HP", _phoneC),
+                  _inputField("Alamat", _addressC, maxLines: 3),
+                ],
+              ),
+            ),
 
             const SizedBox(height: 30),
 
+            /// BUTTON SIMPAN
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // sementara dummy
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text("Perubahan disimpan!")),
                   );
@@ -59,10 +103,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF6B4739),
                   padding: const EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
                 child: const Text(
                   "Simpan Perubahan",
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ),
@@ -84,7 +131,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
         maxLines: maxLines,
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+          floatingLabelBehavior: FloatingLabelBehavior.auto,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+          filled: true,
+          fillColor: const Color(0xFFF9F9F9),
         ),
       ),
     );
