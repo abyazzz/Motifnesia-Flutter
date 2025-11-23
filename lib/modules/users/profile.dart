@@ -25,14 +25,14 @@ class ProfilePage extends StatelessWidget {
 
             /// NAMA DI TENGAH
             const Text(
-              "Khuzaivan",
+              "Motifnesia",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
 
             const SizedBox(height: 4),
 
             Text(
-              "zai@email.com",
+              "motif@email.com",
               style: TextStyle(fontSize: 14, color: Colors.grey.shade700),
             ),
 
@@ -61,7 +61,7 @@ class ProfilePage extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 12),
-                  _InfoItem(title: "Nama", value: "Khuzaivan"),
+                  _InfoItem(title: "Nama", value: "Motifnesia"),
                   _InfoItem(title: "No HP", value: "081234534662"),
                   _InfoItem(title: "Alamat", value: "Ciamis, Jawa Barat"),
                 ],
