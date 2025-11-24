@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import '../../modules/users/home_page.dart';
 import '../../modules/users/profile.dart';
+import '../../modules/users/product_favorite.dart';
 
 class BottomNav extends StatelessWidget {
   const BottomNav({Key? key}) : super(key: key);
@@ -31,6 +32,12 @@ class BottomNav extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (_) => const HomePage()),
+          );
+        } else if (i == 3) {
+          // Favorite
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const ProductFavoritePage()),
           );
         } else if (i == 4) {
           // Profile
