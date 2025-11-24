@@ -73,12 +73,12 @@ class ProfilePage extends StatelessWidget {
             /// TOMBOL AKSI
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton.icon(
+              child: OutlinedButton.icon(
                 icon: const Icon(Icons.edit, size: 18),
                 onPressed: () {
                   Navigator.pushNamed(context, AppRoutes.editProfile);
                 },
-                style: ElevatedButton.styleFrom(
+                style: OutlinedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),

@@ -7,13 +7,13 @@ class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   List<Map<String, String>> get _products => List.generate(
-        10,
-        (i) => {
-          'id': '${i + 1}',
-          'title': 'Baju Batik ${i + 1}',
-          'price': 'Rp ${(i + 1) * 100000},00',
-        },
-      );
+    10,
+    (i) => {
+      'id': '${i + 1}',
+      'title': 'Baju Batik ${i + 1}',
+      'price': 'Rp ${(i + 1) * 100000},00',
+    },
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +47,9 @@ class HomePage extends StatelessWidget {
                 itemCount: products.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  mainAxisSpacing: 12,
-                  crossAxisSpacing: 12,
-                  childAspectRatio: 200 / 290, // width/height proportion
+                  mainAxisSpacing: 6,
+                  crossAxisSpacing: 6,
+                  childAspectRatio: 220 / 350, // width/height proportion
                 ),
                 itemBuilder: (context, idx) {
                   final p = products[idx];
@@ -67,17 +67,33 @@ class HomePage extends StatelessWidget {
                       );
                     },
                     child: Card(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                       elevation: 2,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           ClipRRect(
-                            borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+                            borderRadius: const BorderRadius.vertical(
+                              top: Radius.circular(12),
+                            ),
                             child: Container(
                               height: 170,
                               color: Colors.grey.shade100,
-                              child: const Center(child: Icon(Icons.image, size: 56, color: Colors.grey)),
+                              child: Image.asset(
+                                'lib/assets/67faed38a76e7.jpg',
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return const Center(
+                                    child: Icon(
+                                      Icons.image,
+                                      size: 56,
+                                      color: Colors.grey,
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
                           ),
                           Padding(
@@ -86,14 +102,19 @@ class HomePage extends StatelessWidget {
                               p['title']!,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(fontWeight: FontWeight.w600),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(10, 0, 10, 4),
                             child: Text(
                               p['price']!,
-                              style: const TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+                              style: const TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                           Padding(
